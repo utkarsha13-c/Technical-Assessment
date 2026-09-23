@@ -19,7 +19,7 @@ type SetInput = {
 export default function WorkoutsPage() {
   const router = useRouter();
 
-  const API = "http://localhost:5000";
+  const API = "https://technical-assessment-e3gj.onrender.com";
 
   const [exercises, setExercises] = useState<Exercise[]>([]);
 
