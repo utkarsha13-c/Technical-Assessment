@@ -1,0 +1,36 @@
+name: Technical Assessment CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Backend Dependencies
+        working-directory: section-b-gym-tracker/backend
+        run: npm ci
+
+      - name: Check Backend
+        working-directory: section-b-gym-tracker/backend
+        run: node --check server.js
+
+      - name: Install Frontend Dependencies
+        working-directory: section-b-gym-tracker/frontend
+        run: npm ci
+
+      - name: Build Frontend
+        working-directory: section-b-gym-tracker/frontend
+        run: npm run build
