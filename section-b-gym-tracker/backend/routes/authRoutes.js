@@ -44,13 +44,11 @@ router.post("/register", async (req, res) => {
             user: result.rows[0]
         });
 
-    } catch (error) {
-        console.error("Register error:", error.message);
-
-        res.status(500).json({
-            message: "Server error"
-        });
-    }
+    }  catch (error) {
+  console.error("Register error:", error);
+  res.status(500).json({ message: "Server error" });
+}
+    
 });
 // LOGIN
 router.post("/login", async (req, res) => {
